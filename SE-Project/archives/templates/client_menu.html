@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Client Menu</title>
+</head>
+<body>
+    <h1 style="color: green;">Welcome, Client!</h1>
+    <a href="{{ url_for('audit') }}">Start Audit</a>
+
+    {% if audit_states %}
+        <h2>Audit States</h2>
+        <ul>
+            {% for instance_key, state in audit_states.items() %}
+                <li>
+                    Instance {{ instance_key }}:
+                    Project Name: {{ state['project_name'] }},
+                    Model: {{ state['model'] }},
+                    Documents: {{ state['documents'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

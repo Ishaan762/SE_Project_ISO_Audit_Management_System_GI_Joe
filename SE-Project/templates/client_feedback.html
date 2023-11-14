@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <style>
+        body {
+            background-color: #2B3499;
+            color: #FFD099;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #FF6C22;
+        }
+
+        p {
+            color: #FFD099;
+            margin-top: 20px;
+        }
+
+        strong {
+            color: #FF6C22;
+        }
+
+        a {
+            color: #FFD099;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+            color: #FF9209;
+        }
+
+    </style>
+</head>
+<body>
+    {% if project_feedback %}
+        <h1>Feedback for {{ project_feedback.project_name }}</h1>
+        <p>Feedback Text: {{ project_feedback.feedback_text }}</p>
+        <!-- Add more details as needed -->
+    {% else %}
+        <h1>Project Details: {{ project.project_name }}</h1>
+        <p><strong>No feedback given yet.</strong></p>
+    {% endif %}
+
+    <a href="{{ url_for('welcome') }}">Logout</a>
+</body>
+</html>

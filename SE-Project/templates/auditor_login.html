@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content -->
+    <style>
+        body {
+            background: url('4k-office-background-silapjkl0bkxakj4.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #E3CCAE;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        .login-box {
+            background-color: #262A56;
+            color: #E3CCAE;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px 0px #000000;
+        }
+
+        h1 {
+            color: #B8621B;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #FF9209;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #E3CCAE;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #FFD099;
+            color: #262A56;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF9209;
+        }
+
+        p {
+            color: #B8621B;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>Auditor Login</h1>
+        <form method="POST" action="{{ url_for('auditor_login') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
