@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add your head content -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #2B3499;
+            color: #FFD099;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #FF6C22;
+        }
+
+        form {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #FF9209;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #FFD099;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #FFD099;
+            color: #2B3499;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF9209;
+        }
+
+        p {
+            color: #FF6C22;
+        }
+
+        .success {
+            color: green;
+        }
+
+        a {
+            color: #FFD099;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+        }
+
+        button.logout-button {
+            background-color: #FFD099;
+            color: #2B3499;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button.logout-button:hover {
+            background-color: #FF9209;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>Client Dashboard</h1>
+                {% if project %}
+                    <p class="lead">Project Details:</p>
+                    <p>Name: {{ project.project_name }}</p>
+                    <!-- Add more details as needed -->
+                {% endif %}
+                <form method="POST" action="{{ url_for('client_dashboard') }}">
+                    <label for="project_name">Project Name:</label>
+                    <input type="text" id="project_name" name="project_name" required>
+
+                    <label for="project_description">Project Description:</label>
+                    <textarea id="project_description" name="project_description" required></textarea>
+
+                    <label for="model_used">Model Used:</label>
+                    <select id="model_used" name="model_used">
+                        <option value="Waterfall">Waterfall</option>
+                        <option value="Agile ">Agile</option>
+                        <option value="V-shaped">V-shaped</option>
+                        <option value="Spiral ">Spiral</option>
+                        <option value="Iterative">Iterative</option>
+                        <!-- Add more model options as needed -->
+                    </select>
+
+                    <!-- Add more form fields as needed -->
+
+                    <button type="submit" class="btn btn-primary">Upload Project Details</button>
+                </form>
+                {% if success %}
+                    <p class="success">{{ success }}</p>
+                {% endif %}
+                <a href="{{ url_for('welcome') }}" class="btn btn-secondary mt-3">Logout</a>
+                
+                <!-- Button to access the feedback page -->
+                <a href="{{ url_for('client_feedback', project_name=project.project_name) }}" class="btn btn-danger mt-3">View Feedback</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
