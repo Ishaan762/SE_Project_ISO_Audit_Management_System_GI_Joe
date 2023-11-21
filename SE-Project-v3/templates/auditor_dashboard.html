@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditor Dashboard</title>
+    <style>
+        body {
+            background-color: #2B3499;
+            color: #FFD099;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #FF6C22;
+        }
+
+        p {
+            color: #FFD099;
+        }
+
+        a {
+            color: #FFD099;
+            text-decoration: none;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #FFD099;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        a:hover {
+            background-color: #FFD099;
+            color: #2B3499;
+        }
+
+        button {
+            background-color: #FFD099;
+            color: #2B3499;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF9209;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Auditor Dashboard</h1>
+        <p>Project Details:</p>
+        <p>Name: {{ project.project_name }}</p>
+        <p>Description: {{ project.project_description }}</p>
+        <p>Model Used: {{ project.model_used }}</p>
+        <a href="{{ url_for('auditor_feedback', project_name=project.project_name) }}" class="btn btn-primary">Provide Feedback</a>
+
+        <!-- Logout Button -->
+        <a href="{{ url_for('welcome') }}"><button class="btn btn-danger">Logout</button></a>
+    </div>
+</body>
+</html>
