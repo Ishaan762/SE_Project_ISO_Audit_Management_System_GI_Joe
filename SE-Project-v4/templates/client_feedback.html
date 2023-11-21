@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #2B3499;
+            color: #FFD099;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #FF6C22;
+        }
+
+        p {
+            color: #FFD099;
+            margin-top: 20px;
+        }
+
+        strong {
+            color: #FF6C22;
+        }
+
+        a {
+            color: #FFD099;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+            color: #FF9209;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% if project_feedback %}
+                    <h1>Feedback for {{ project_feedback.project_name }}</h1>
+                    <p class="lead">Feedback Text: {{ project_feedback.feedback_text }}</p>
+                    <p class="lead">Conformance Level: {{ project_feedback.conformance_level }}</p>
+                    <!-- Add more details as needed -->
+                {% else %}
+                    <h1>Project Details: {{ project.project_name }}</h1>
+                    <p class="lead"><strong>No feedback given yet.</strong></p>
+                {% endif %}
+
+                <a href="{{ url_for('client_dashboard') }}" class="btn btn-secondary mt-3">Back to Client Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

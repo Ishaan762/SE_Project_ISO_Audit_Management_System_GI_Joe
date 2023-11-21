@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #262A56;
+            color: #E3CCAE;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #B8621B;
+        }
+
+        .glow {
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .glow:hover {
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                background-color: #E3CCAE;
+            }
+            to {
+                background-color: #B8621B;
+            }
+        }
+
+        a {
+            color: #1221a7;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #E3CCAE;
+            border-radius: 5px;
+        }
+
+        .login-box {
+            background-color: #E3CCAE;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Welcome</h1>
+                <div class="glow">
+                    <div class="login-box">
+                        <a href="{{ url_for('client_login') }}" class="btn btn-primary">Login as Client</a>
+                        <br>
+                        <a href="{{ url_for('auditor_login') }}" class="btn btn-secondary">Login as Auditor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditor Feedback</title>
+    <style>
+        body {
+            background-color: #2B3499;
+            color: #FFD099;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #FF6C22;
+        }
+
+        form {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            color: #FF9209;
+        }
+
+        textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #FFD099;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            color: #2B3499;
+        }
+
+        button {
+            background-color: #FFD099;
+            color: #2B3499;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF9209;
+        }
+
+        a {
+            color: #FFD099;
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+            color: #FF9209;
+        }
+
+        button.logout-button {
+            background-color: #FFD099;
+            color: #2B3499;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button.logout-button:hover {
+            background-color: #FF9209;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <h1>Enter Feedback for {{ project_name }}</h1>
+            <form method="POST" action="{{ url_for('auditor_feedback', project_name=project_name) }}">
+                <label for="feedback_text">Feedback:</label>
+                <textarea id="feedback_text" name="feedback_text" required></textarea>
+    
+                <label for="conformance_level">Conformance Level (1-100):</label>
+                <input type="number" id="conformance_level" name="conformance_level" min="1" max="100" required>
+    
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+            <a href="{{ url_for('welcome') }}" class="logout-link">Logout</a>
+        </div>
+</body>
+</html>
